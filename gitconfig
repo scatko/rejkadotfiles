@@ -1,0 +1,22 @@
+[user]
+  name = Andrej Ščatko
+  email = andrei.shchatko@gmail.com
+  signingkey = 6AFEC5FA
+[alias]
+  st = status
+  ci = commit
+  br = branch
+  co = checkout
+  cp = cherry-pick
+[core]
+  editor = nvim
+[color]
+  diff = true
+  status = true
+  branch = true
+  interactive = true
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
