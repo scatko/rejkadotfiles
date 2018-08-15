@@ -37,6 +37,7 @@ Plug 'scrooloose/nerdcommenter'
 
 " Indents
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'Yggdroot/indentLine'
 
 " git
 Plug 'tpope/vim-fugitive'
@@ -46,6 +47,10 @@ Plug 'cohama/agit.vim'
 " colors
 Plug 'arcticicestudio/nord-vim'
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'w0ng/vim-hybrid'
+Plug 'morhetz/gruvbox'
+Plug 'rakr/vim-one'
+Plug 'ayu-theme/ayu-vim'
 
 " Syntax highlights for many languages
 Plug 'sheerun/vim-polyglot'
@@ -61,6 +66,9 @@ Plug 'styled-components/vim-styled-components'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'othree/yajs.vim'
 Plug 'othree/es.next.syntax.vim'
+
+" Ruby
+Plug 'dermusikman/sonicpi.vim'
 
 " Clojure
 Plug 'tpope/vim-fireplace'
@@ -108,8 +116,14 @@ set ttyfast
 " colors
 syntax on
 set t_Co=256
+colorscheme one
 set background=dark
-colorscheme PaperColor
+" colorscheme PaperColor
+set termguicolors     " enable true colors support
+" let ayucolor="light"  " for light version of theme
+" let ayucolor="mirage" " for mirage version of theme
+" let ayucolor="dark"   " for dark version of theme
+" colorscheme ayu
 
 " UI
 set number
@@ -123,10 +137,10 @@ set cursorline
 set tabstop=2
 set shiftwidth=2
 set expandtab
-let g:indent_guides_enable_on_vim_startup = 1
+" let g:indent_guides_enable_on_vim_startup = 1
 
 " Unprintable characters
-set list
+" set list
 set listchars=tab:▸\ ,eol:⏎,trail:␠,extends:❯,precedes:❮,nbsp:·,space:·
 " F3: Toggle list (display unprintable characters).
 " https://stackoverflow.com/questions/12534313/vim-set-list-as-a-toggle-in-vimrc
@@ -188,13 +202,22 @@ let g:ale_fixers['javascript'] = ['prettier']
 let g:ale_fixers['vue'] = ['prettier']
 let g:ale_fixers['css'] = ['prettier']
 let g:ale_fixers['scss'] = ['prettier']
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 0
 let g:ale_javascript_prettier_options = '--print-width 120 --no-semi --single-quote --parser babylon'
 
 let g:airline#extensions#ale#enabled = 1
+let g:airline_theme = 'one'
 
 " vim-jsx (react installed via polyglot)
 let g:jsx_ext_required = 0
 
 " vim-vue (installed via polyglot)
 let g:vue_disable_pre_processors=1
+
+" sonic-pi
+let g:sonicpi_command = 'sonic-pi-tool'
+let g:sonicpi_send = 'eval-stdin'
+let g:sonicpi_stop = 'stop'
+let g:vim_redraw = 1
+
+noremap <leader>r :silent w !sonic-pi-tool eval<CR>
