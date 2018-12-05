@@ -8,7 +8,8 @@
 
 dir=~/rejkadotfiles                                   # dotfiles directory
 olddir=~/rejkadotfiles_old                            # old dotfiles backup directory
-files="vim vimrc gitconfig"    # list of files/folders to symlink in homedir
+files="vim vimrc zshrc tmux.conf gitconfig"           # list of files/folders to symlink in homedir
+configs="alacritty"
 
 ##########
 
@@ -30,4 +31,13 @@ for file in $files; do
   mv ~/.$file $olddir
   echo "Creating symlink to $file in home directory."
   ln -s $dir/$file ~/.$file
+done
+
+for config in $configs; do
+  echo "Moving $config from ~/.config to $olddir"
+  rm -rf $olddir/$config
+  mv ~/.config/$config $olddir
+  echo "Creating symlink to $config in home directory."
+  rm -rf ~/.config/$config
+  ln -s $dir/$config ~/.config/$config
 done

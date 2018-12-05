@@ -45,35 +45,32 @@ Plug 'airblade/vim-gitgutter'
 Plug 'cohama/agit.vim'
 
 " colors
-Plug 'arcticicestudio/nord-vim'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'w0ng/vim-hybrid'
-Plug 'morhetz/gruvbox'
-Plug 'rakr/vim-one'
-Plug 'ayu-theme/ayu-vim'
+" Plug 'arcticicestudio/nord-vim'
+" Plug 'NLKNguyen/papercolor-theme'
+" Plug 'w0ng/vim-hybrid'
+" Plug 'morhetz/gruvbox'
+" Plug 'rakr/vim-one'
+" Plug 'ayu-theme/ayu-vim'
+Plug 'chriskempson/base16-vim'
 
 " Syntax highlights for many languages
 Plug 'sheerun/vim-polyglot'
 
 " CSS
-Plug 'hail2u/vim-css3-syntax'
-Plug 'ap/vim-css-color'
-Plug 'miripiruni/vim-better-css-indent'
-Plug 'csscomb/vim-csscomb'
-Plug 'styled-components/vim-styled-components'
+Plug 'ap/vim-css-color', { 'for': ['css', 'scss', 'javascript'] }
 
 " JavaScript
-Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'othree/yajs.vim'
-Plug 'othree/es.next.syntax.vim'
+Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
+Plug 'othree/yajs.vim', { 'for': 'javascript' }
+Plug 'othree/es.next.syntax.vim', { 'for': 'javascript' }
 
 " Ruby
-Plug 'dermusikman/sonicpi.vim'
+Plug 'dermusikman/sonicpi.vim', { 'for': 'ruby' }
 
 " Clojure
-Plug 'tpope/vim-fireplace'
-Plug 'tpope/vim-classpath'
-Plug 'kien/rainbow_parentheses.vim'
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+Plug 'tpope/vim-classpath', { 'for': 'clojure' }
+Plug 'kien/rainbow_parentheses.vim', { 'for': 'clojure' }
 
 " Processing
 Plug 'sophacles/vim-processing', { 'for': 'processing' }
@@ -83,7 +80,7 @@ Plug 'luisjure/csound', { 'for': 'csound' }
 
 " SuperCollider
 Plug 'sbl/scvim', { 'for': 'scd' }
-Plug 'munshkr/vim-tidal'
+Plug 'munshkr/vim-tidal', { 'for': 'haskell' }
 
 " vim-halo
 Plug 'mhinz/vim-halo'
@@ -106,6 +103,8 @@ endif
 " Initialize plugin system
 call plug#end()
 
+set re=1
+
 " Encoding
 set encoding=utf-8
 set fileencodings=utf-8,cp-1251
@@ -116,8 +115,9 @@ set ttyfast
 " colors
 syntax on
 set t_Co=256
-colorscheme one
+" colorscheme one
 set background=dark
+colorscheme base16-default-dark
 " colorscheme PaperColor
 set termguicolors     " enable true colors support
 " let ayucolor="light"  " for light version of theme
@@ -174,6 +174,9 @@ endfunction
 :inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
 :set dictionary="/usr/dict/words"
 
+" macos clipboard
+set clipboard=unnamed
+
 " mouse scroll
 set mouse=a
 if has("mouse_sgr")
@@ -199,14 +202,16 @@ let g:ctrlp_custom_ignore = '\v[\/](node_modules)|(\.(swp|git))'
 " ale (prettier) config
 let g:ale_fixers = {}
 let g:ale_fixers['javascript'] = ['prettier']
+let g:ale_fixers['html'] = ['tidy']
 let g:ale_fixers['vue'] = ['prettier']
 let g:ale_fixers['css'] = ['prettier']
 let g:ale_fixers['scss'] = ['prettier']
-let g:ale_fix_on_save = 0
-let g:ale_javascript_prettier_options = '--print-width 120 --no-semi --single-quote --parser babylon'
+let g:ale_fix_on_save = 1
+"let g:ale_javascript_prettier_options = '--print-width 120 --no-semi --single-quote --parser babylon'
+let g:ale_javascript_prettier_use_local_config = 1
 
 let g:airline#extensions#ale#enabled = 1
-let g:airline_theme = 'one'
+let g:airline_theme = 'base16_default'
 
 " vim-jsx (react installed via polyglot)
 let g:jsx_ext_required = 0
@@ -221,3 +226,5 @@ let g:sonicpi_stop = 'stop'
 let g:vim_redraw = 1
 
 noremap <leader>r :silent w !sonic-pi-tool eval<CR>
+
+map <F8> :Ggrep <cword><CR>
