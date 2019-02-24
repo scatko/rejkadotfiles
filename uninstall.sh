@@ -1,7 +1,7 @@
 #!/bin/bash
 
 olddir=~/rejkadotfiles_old                      # old dotfiles backup directory
-files="vim vimrc zshrc tmux.conf gitconfig"     # list of files/folders to symlink in homedir
+files="vim vimrc bashrc tmux.conf gitconfig"     # list of files/folders to symlink in homedir
 configs="alacritty"
 
 echo "Uninstalling rejkadotfiles :recycle:"
