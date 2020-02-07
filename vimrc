@@ -19,6 +19,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'tidalcycles/vim-tidal'
 Plug 'dermusikman/sonicpi.vim'
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 call plug#end()
 
 " Turn on syntax highlighting
@@ -28,6 +29,8 @@ syntax on
 filetype plugin indent on
 
 set mouse=a
+
+set clipboard=unnamedplus
 
 " TODO: Pick a leader key
 " let mapleader = ","
@@ -101,7 +104,7 @@ vnoremap <F1> :set invfullscreen<CR>
 map <leader>q gqip
 
 " Visualize tabs and newlines
-set listchars=tab:▸\ ,eol:¬
+set listchars=tab:▸\ ,eol:¬,trail:· 
 " Uncomment this to enable by default:
 " set list " To enable by default
 " Or use your leader key + l to toggle on/off
@@ -109,6 +112,7 @@ map <leader>l :set list!<CR> " Toggle tabs and EOL
 
 " Color scheme (terminal)
 set t_Co=256
+let base16colorspace=256
 " set background=dark
 let g:hybrid_termcolors=256
 let g:hybrid_termtrans=1
@@ -117,10 +121,12 @@ let g:hybrid_termtrans=1
 "colorscheme Tomorrow-Night
 colorscheme base16-material-darker
 hi Normal ctermbg=none
+hi Visual  guifg=White guibg=LightBlue gui=none
+" hi Visual term=reverse cterm=reverse guibg=Grey
 
 " Change the color of the editor after 80 chars, except for the quickfix panel.
-let &colorcolumn=join(range(81,999),",")
-au FileType qf setlocal nonumber colorcolumn=
+" let &colorcolumn=join(range(81,999),",")
+" au FileType qf setlocal nonumber colorcolumn=
 
 " ctrlp
 let g:ctrlp_custom_ignore = '\v[\/](node_modules)|(\.(swp|git))'

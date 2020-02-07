@@ -160,6 +160,9 @@ eval "$(rbenv init -)"
 export PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
 export GEM_HOME=$HOME/.gem
 
+# python venv
+source /usr/bin/virtualenvwrapper.sh
+
 # yarn global packages
 export PATH="$(yarn global bin):$PATH"
 
@@ -181,3 +184,16 @@ alias glog='git log --oneline --decorate --graph'
 alias gloga='git log --oneline --decorate --graph --all'
 
 source <(kitty + complete setup bash)
+
+# Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && \
+    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+        eval "$("$BASE16_SHELL/profile_helper.sh")"
+
+# oracle
+export ORACLE_HOME=/usr/local/oracle/instantclient_19_3
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/oracle/instantclient_19_3
+
+# go
+export GOPATH=$HOME/Dev/go
