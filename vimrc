@@ -120,6 +120,12 @@ let g:hybrid_termtrans=1
 " in ~/.vim/colors/ and uncomment:
 "colorscheme Tomorrow-Night
 colorscheme base16-material-darker
+
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
+
 hi Normal ctermbg=none
 hi Visual  guifg=White guibg=LightBlue gui=none
 " hi Visual term=reverse cterm=reverse guibg=Grey
