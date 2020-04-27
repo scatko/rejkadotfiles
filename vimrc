@@ -38,8 +38,8 @@ set clipboard=unnamedplus
 " Security
 set modelines=0
 
-" Don't show line numbers
-set nonumber
+" Show line numbers
+set number
 
 " Show file stats
 set ruler
@@ -51,7 +51,7 @@ set visualbell
 set encoding=utf-8
 
 " Whitespace
-set wrap
+set nowrap
 set textwidth=79
 set formatoptions=tcqrn1
 set tabstop=2
