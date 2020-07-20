@@ -143,9 +143,12 @@ let g:ctrlp_custom_ignore = '\v[\/](node_modules)|(\.(swp|git))'
 " ale (prettier) config
 let g:ale_linters = {}
 let g:ale_linters['javascript'] = ['eslint']
+let g:ale_linters['typescript'] = ['tsserver', 'tslint']
+let g:ale_linters['typescriptreact'] = ['tsserver', 'tslint']
 let g:ale_fixers = {}
 let g:ale_fixers['javascript'] = ['prettier']
-let g:ale_fixers['typescript'] = ['prettier', 'tslint']
+let g:ale_fixers['typescript'] = ['prettier']
+let g:ale_fixers['typescriptreact'] = ['prettier']
 let g:ale_fixers['html'] = ['tidy']
 let g:ale_fixers['vue'] = ['prettier']
 let g:ale_fixers['css'] = ['prettier']
