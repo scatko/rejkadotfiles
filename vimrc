@@ -20,6 +20,9 @@ Plug 'sheerun/vim-polyglot'
 Plug 'tidalcycles/vim-tidal'
 Plug 'dermusikman/sonicpi.vim'
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
+Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/denite.nvim'
 call plug#end()
 
 " Turn on syntax highlighting
@@ -138,8 +141,11 @@ hi Visual  guifg=White guibg=LightBlue gui=none
 let g:ctrlp_custom_ignore = '\v[\/](node_modules)|(\.(swp|git))'
 
 " ale (prettier) config
+let g:ale_linters = {}
+let g:ale_linters['javascript'] = ['eslint']
 let g:ale_fixers = {}
 let g:ale_fixers['javascript'] = ['prettier']
+let g:ale_fixers['typescript'] = ['prettier', 'tslint']
 let g:ale_fixers['html'] = ['tidy']
 let g:ale_fixers['vue'] = ['prettier']
 let g:ale_fixers['css'] = ['prettier']
@@ -180,6 +186,8 @@ function! Tab_Or_Complete()
 endfunction
 :inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
 :set dictionary="/usr/dict/words"
+
+let g:deoplete#enable_at_startup = 1
 
 " Goto the file under the cursor
 nnoremap gf :vertical wincmd f<CR>
