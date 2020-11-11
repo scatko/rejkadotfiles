@@ -197,3 +197,6 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/oracle/instantclient_19_3
 
 # go
 export GOPATH=$HOME/Dev/go
+
+# Add .NET Core SDK tools
+export PATH="$PATH:/home/rejka/.dotnet/tools"
