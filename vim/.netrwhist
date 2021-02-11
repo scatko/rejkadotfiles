@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/home/rejka/Dev/stuff/formik-example/src'
+let g:netrw_dirhist_3='/home/rejka/Dev/stuff/formik-example'
+let g:netrw_dirhist_2='/home/rejka/Dev/stuff/MyGame'
+let g:netrw_dirhist_1='/home/rejka/Dev/ucheba/ucheba-next/src'

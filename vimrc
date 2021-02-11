@@ -19,6 +19,7 @@ Plug 'w0rp/ale'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'tidalcycles/vim-tidal'
+Plug 'xojs/vim-xo'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -190,6 +191,7 @@ let g:coc_global_extensions = [
   \ 'coc-snippets',
   \ 'coc-pairs',
   \ 'coc-tsserver',
+  \ 'coc-deno',
   \ 'coc-eslint', 
   \ 'coc-prettier', 
   \ 'coc-json', 
